@@ -21,8 +21,20 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/galeri', 'GaleriController@index')->name('galeri');
-Route::get('/kategori', 'KategoriController@index')->name('kategori');
-Route::get('/kontak', 'KontakController@index')->name('kontak');
-Route::get('/tentang', 'TentangController@index')->name('tentang');
+Route::group(['middleware' => 'auth'], function () {
+
+  Route::get('/home', 'HomeController@index')->name('home');
+
+  Route::get('galeri/{id}/delete', 'GaleriController@hapus')->name('galeri.hapus');
+  Route::resource('galeri', 'GaleriController');
+
+  Route::get('kategori/{id}/delete', 'KategoriController@hapus')->name('kategori.hapus');
+  Route::resource('kategori', 'KategoriController');
+
+  Route::get('kontak/{id}/delete', 'KontakController@hapus')->name('kontak.hapus');
+  Route::resource('kontak', 'KontakController');
+
+  Route::get('tentang/{id}/delete', 'TentangController@hapus')->name('tentang.hapus');
+  Route::resource('tentang', 'TentangController');
+
+});

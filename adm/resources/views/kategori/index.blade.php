@@ -8,7 +8,7 @@
 
 <style>
   thead {
-      background-color: #a2a2a2;
+      background-color: #585858;
   }
   thead tr th {
       text-align: center;
@@ -31,10 +31,7 @@
         <h1 class="m-0 text-dark">Kategori</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Kategori</li>
-        </ol>
+        
       </div><!-- /.col -->
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->
@@ -52,7 +49,7 @@
         @endif
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title"><a href="#" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
+            <h3 class="card-title"><a href="{{ route('kategori.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -61,10 +58,22 @@
               <tr>
                 <th>No</th>
                 <th>Nama</th>
+                <th>#</th>
               </tr>
               </thead>
               <tbody>
-
+                @foreach ($kategoris as $key => $kategori)
+                  <tr>
+                      <td>{{ $key + 1 }}</td>
+                      <td class="text-left">{{ $kategori->nama }}</td>
+                      <td>
+                          <div class="btn-group">
+                              <a href="{{ route('kategori.edit', [$kategori->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                              <a href="{{ route('kategori.hapus', [$kategori->id]) }}" onclick="return confirm('Yakin akan hapus?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                          </div>
+                      </td>
+                  </tr>
+              @endforeach
               </tbody>
             </table>
           </div>

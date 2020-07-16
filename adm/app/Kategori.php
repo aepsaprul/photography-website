@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kategori extends Model
 {
@@ -11,4 +12,9 @@ class Kategori extends Model
     protected $fillable = [
         'nama', 'grup'
     ];
+
+    public function data_galeri()
+    {
+        return $this->hasMany('App\Galeri', 'kategori_id', 'id');
+    }
 }

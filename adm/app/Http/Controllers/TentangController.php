@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tentang;
 use Illuminate\Http\Request;
 
 class TentangController extends Controller
@@ -13,7 +14,9 @@ class TentangController extends Controller
      */
     public function index()
     {
-        return view('tentang.index');
+        $tentangs = Tentang::orderBy('id')->get();
+
+        return view('tentang.index', ['tentangs' => $tentangs]);
     }
 
     /**
@@ -23,7 +26,7 @@ class TentangController extends Controller
      */
     public function create()
     {
-        //
+        return view('tentang.input');
     }
 
     /**
@@ -34,7 +37,18 @@ class TentangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Validator::make($request->all(), [
+            "nama" => "required|max:50"
+        ])->validate();
+
+        $tentangs = Tentang::create([
+            "nama" => $request->nama,
+            "deskripsi" => $request->deskripsi
+        ]);
+
+        $request->session()->flash('status', 'Data berhasil disimpan');
+
+        return redirect()->route('tentang.index');
     }
 
     /**
@@ -56,7 +70,9 @@ class TentangController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tentang = Tentang::find($id);
+
+        return view('tentang.edit', ['tentang' => $tentang]);
     }
 
     /**
@@ -68,7 +84,12 @@ class TentangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tentang = Tentang::findOrFail($id);
+        $tentang->nama = $request->get('nama');
+        $tentang->deskripsi = $request->get('deskripsi');
+        $tentang->save();
+
+        return redirect()->route('tentang.index')->with('status', 'tentang succesfully updated');
     }
 
     /**
@@ -80,5 +101,16 @@ class TentangController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function hapus(Request $request, $id)
+    {
+        $tentang = tentang::find($id);
+        
+        $tentang->delete();
+
+        $request->session()->flash('status', 'Data berhasil dihapus');
+        
+        return redirect()->route('tentang.index');
     }
 }

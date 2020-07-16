@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
 
 class KategoriController extends Controller
 {
@@ -13,7 +14,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('kategori.index');
+        $kategoris = Kategori::orderBy('id')->get();
+
+        return view('kategori.index', ['kategoris' => $kategoris]);
     }
 
     /**
@@ -23,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori.input');
     }
 
     /**
@@ -34,7 +37,17 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Validator::make($request->all(), [
+            "nama" => "required|max:50"
+        ])->validate();
+
+        $kategoris = Kategori::create([
+            "nama" => $request->nama
+        ]);
+
+        $request->session()->flash('status', 'Data berhasil disimpan');
+
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -56,7 +69,9 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategori = Kategori::find($id);
+
+        return view('kategori.edit', ['kategori' => $kategori]);
     }
 
     /**
@@ -67,8 +82,12 @@ class KategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {        
+        $kategori = Kategori::findOrFail($id);
+        $kategori->nama = $request->get('nama');
+        $kategori->save();
+        
+        return redirect()->route('kategori.index')->with('status', 'Kategori succesfully updated');
     }
 
     /**
@@ -80,5 +99,16 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function hapus(Request $request, $id)
+    {
+        $kategori = Kategori::find($id);
+        
+        $kategori->delete();
+
+        $request->session()->flash('status', 'Data berhasil dihapus');
+        
+        return redirect()->route('kategori.index');
     }
 }

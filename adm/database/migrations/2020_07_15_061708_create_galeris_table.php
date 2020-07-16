@@ -18,7 +18,7 @@ class CreateGalerisTable extends Migration
             $table->string('nama', 50)->nullable();
             $table->text('keterangan')->nullable();
             $table->string('img', 50)->nullable();
-            $table->string('ketegori', 5)->nullable();
+            $table->string('kategori_id', 5)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

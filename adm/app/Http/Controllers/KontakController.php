@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kontak;
 use Illuminate\Http\Request;
 
 class KontakController extends Controller
@@ -13,7 +14,9 @@ class KontakController extends Controller
      */
     public function index()
     {
-        return view('kontak.index');
+        $kontaks = Kontak::orderBy('id')->get();
+
+        return view('kontak.index', ['kontaks' => $kontaks]);
     }
 
     /**
@@ -23,7 +26,7 @@ class KontakController extends Controller
      */
     public function create()
     {
-        //
+        return view('kontak.input');
     }
 
     /**
@@ -34,7 +37,18 @@ class KontakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Validator::make($request->all(), [
+            "nama" => "required|max:50"
+        ])->validate();
+
+        $kontaks = Kontak::create([
+            "nama" => $request->nama,
+            "keterangan" => $request->keterangan
+        ]);
+
+        $request->session()->flash('status', 'Data berhasil disimpan');
+
+        return redirect()->route('kontak.index');
     }
 
     /**
@@ -56,7 +70,9 @@ class KontakController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kontak = Kontak::find($id);
+
+        return view('kontak.edit', ['kontak' => $kontak]);
     }
 
     /**
@@ -68,7 +84,11 @@ class KontakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kontak = Kontak::findOrFail($id);
+        $kontak->nama = $request->get('nama');
+        $kontak->keterangan = $request->get('keterangan');
+        $kontak->save();
+        return redirect()->route('kontak.index')->with('status', 'kontak succesfully updated');
     }
 
     /**
@@ -80,5 +100,16 @@ class KontakController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function hapus(Request $request, $id)
+    {
+        $kontak = Kontak::find($id);
+        
+        $kontak->delete();
+
+        $request->session()->flash('status', 'Data berhasil dihapus');
+        
+        return redirect()->route('kontak.index');
     }
 }
