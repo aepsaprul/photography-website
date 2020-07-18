@@ -72,10 +72,11 @@
                       <td class="text-left">{{ $galeri->keterangan }}</td>
                       <td>
                         @if ($galeri->img)
-                          <img src="{{ asset('img/' . $galeri->img) }}" style="max-width: 100px;" id="img"></td>
+                          <img src="{{ asset('img/' . $galeri->img) }}" style="max-width: 100px;" id="img">
                         @else
                           N/A
-                        @endif                        
+                        @endif    
+                      </td>                    
                       <td>{{ $galeri->data_kategori->nama }}</td>
                       <td>
                           <div class="btn-group">

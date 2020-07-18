@@ -37,7 +37,14 @@
           </div>
           <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
-            <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{$tentang->deskripsi}}" placeholder="Masukkan nama">
+            <textarea name="deskripsi" id="deskripsi" cols="30" rows="5" class="form-control">{{$tentang->deskripsi}}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="img">Foto</label>
+            <div class="form-group">
+              <img src="{{ url('img/' . $tentang->img . '') }}" style="max-width: 250px;">
+            </div>
+            <input type="file" class="form-control" id="img" name="img" placeholder="Masukkan keterangan">
           </div>
         </div>
         <!-- /.card-body -->

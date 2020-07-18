@@ -10,6 +10,6 @@ class Tentang extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'nama', 'deskripsi'
+        'nama', 'deskripsi', 'img'
     ];
 }

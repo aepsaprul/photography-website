@@ -20,7 +20,7 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ route('tentang.store') }}" method="POST">
+      <form action="{{ route('tentang.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
           <div class="form-group">
@@ -29,7 +29,11 @@
           </div>
           <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
-            <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi">
+            <textarea name="deskripsi" id="deskripsi" cols="30" rows="5" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="img">Gambar</label>
+            <input type="file" class="form-control" id="img" name="img" placeholder="Masukkan foto">
           </div>
         </div>
         <!-- /.card-body -->

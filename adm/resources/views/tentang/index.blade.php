@@ -59,6 +59,7 @@
                 <th>No</th>
                 <th>Nama</th>
                 <th>Deskripsi</th>
+                <th>Gambar</th>
                 <th>#</th>
               </tr>
               </thead>
@@ -68,6 +69,13 @@
                       <td>{{ $key + 1 }}</td>
                       <td class="text-left">{{ $tentang->nama }}</td>
                       <td class="text-left">{{ $tentang->deskripsi }}</td>
+                      <td>
+                        @if ($tentang->img)
+                          <img src="{{ asset('img/' . $tentang->img) }}" style="max-width: 100px;" id="img">
+                        @else
+                          N/A
+                        @endif    
+                      </td>   
                       <td>
                           <div class="btn-group">
                               <a href="{{ route('tentang.edit', [$tentang->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>

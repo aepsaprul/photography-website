@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tentang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TentangController extends Controller
 {
@@ -41,9 +42,18 @@ class TentangController extends Controller
             "nama" => "required|max:50"
         ])->validate();
 
+        $image_name = null; 
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $image_name = 'tentang_' . time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/img');
+            $image->move($path, $image_name);
+        }
+
         $tentangs = Tentang::create([
             "nama" => $request->nama,
-            "deskripsi" => $request->deskripsi
+            "deskripsi" => $request->deskripsi,
+            "img" => $image_name
         ]);
 
         $request->session()->flash('status', 'Data berhasil disimpan');
@@ -87,6 +97,19 @@ class TentangController extends Controller
         $tentang = Tentang::findOrFail($id);
         $tentang->nama = $request->get('nama');
         $tentang->deskripsi = $request->get('deskripsi');
+
+        if ($request->hasFile('img')) {
+            $destinationPath = public_path('/img');
+            File::delete($destinationPath . '/' . $tentang->img);
+
+            $image = $request->file('img');
+            $image_name = 'tentang_' . time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/img');
+            $image->move($path, $image_name);
+
+            $tentang->img = $image_name;
+        }
+        
         $tentang->save();
 
         return redirect()->route('tentang.index')->with('status', 'tentang succesfully updated');
@@ -108,6 +131,9 @@ class TentangController extends Controller
         $tentang = tentang::find($id);
         
         $tentang->delete();
+
+        $destinationPath = public_path('/img');
+        File::delete($destinationPath . '/' . $tentang->img);
 
         $request->session()->flash('status', 'Data berhasil dihapus');
         

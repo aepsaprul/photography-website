@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'WelcomeController@index')->name('welcome');
+
+Route::get('/reservasi', 'ReservasiController@index')->name('reservasi');
+
+Route::get('/galeri', 'GaleriController@index')->name('galeri');
+
+Route::get('/kontak', 'KontakController@index')->name('kontak');
+
+Route::get('/tentang', 'TentangController@index')->name('tentang');
