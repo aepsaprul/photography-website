@@ -68,7 +68,7 @@
                                         <li class="{{ set_active(['reservasi', 'reservasi/*']) }}"><a href="{{ url('/reservasi') }}">Reservasi</a></li>
                                         <li class="{{ set_active(['galeri', 'galeri/*']) }}"><a href="{{ url('/galeri') }}">Gallery</a></li>
                                         <li class="{{ set_active(['kontak', 'kontak/*']) }}"><a href="{{ url('/kontak') }}">Contact</a></li>
-                                        <li class="{{ set_active(['tentang', 'tentang/*']) }}"><a href="{{ url('/') }}">About</a></li>
+                                        <li class="{{ set_active(['tentang', 'tentang/*']) }}"><a href="{{ url('/tentang') }}">About</a></li>
                                     </ul>
 
                                     <!-- Search Icon -->
