@@ -32,7 +32,8 @@
                   <div class="portfolio-menu text-center">
                       <button class="btn active" data-filter="*">All</button>
                       <button class="btn" data-filter=".1">Hari ini</button>
-                      <button class="btn" data-filter=".3">Bulan ini</button>
+                      <button class="btn" data-filter=".3">Minggu ini</button>
+                      <button class="btn" data-filter=".4">Bulan ini</button>
                   </div>
               </div>
           </div>

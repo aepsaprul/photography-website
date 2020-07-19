@@ -25,7 +25,7 @@
         </div> --}}
 
         <!-- Single Slide -->
-        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(img/bg-img/2.jpg);">
+        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(img/bg-slide-top.jpg);">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <!-- Welcome Text -->

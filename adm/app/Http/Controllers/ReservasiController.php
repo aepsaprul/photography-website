@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Reservasi;
 use Illuminate\Http\Request;
 
 class ReservasiController extends Controller
@@ -13,7 +14,8 @@ class ReservasiController extends Controller
      */
     public function index()
     {
-        //
+        $reservasis = Reservasi::get();
+        return view('reservasi.index', ['reservasis' => $reservasis]);
     }
 
     /**

@@ -48,7 +48,7 @@
                         <nav class="classy-navbar justify-content-between" id="alimeNav">
 
                             <!-- Logo -->
-                            <a class="nav-brand" href="./index.html"><img src="./img/core-img/logo.png" alt=""></a>
+                            <a class="nav-brand" href="./index.html"><img src="{{ asset("img/logo1.png") }}" alt=""></a>
 
                             <!-- Navbar Toggler -->
                             <div class="classy-navbar-toggler">
@@ -101,65 +101,17 @@
             <!-- Instagram Feed Area -->
             <div class="instragram-feed-area owl-carousel">
                 <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/11.jpg" alt="">
-                    <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/12.jpg" alt="">
-                    <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/13.jpg" alt="">
-                    <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/14.jpg" alt="">
-                    <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/15.jpg" alt="">
-                    <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Single Instagram Item -->
-                <div class="single-instagram-item">
-                    <img src="img/bg-img/16.jpg" alt="">
-                    <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                        <a href="#">
-                            <i class="ti-instagram" aria-hidden="true"></i>
-                            <span>Alime_photographer</span>
-                        </a>
-                    </div>
-                </div>
+                @foreach ($galeris as $galeri)
+                  <div class="single-instagram-item">
+                      <img src="http://localhost/photography-website/adm/public/img/{{ $galeri->img }}" alt="">
+                      {{-- <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
+                          <a href="#">
+                              <i class="ti-instagram" aria-hidden="true"></i>
+                              <span>Alime_photographer</span>
+                          </a>
+                      </div> --}}
+                  </div>
+                @endforeach
             </div>
         </section>
         <!-- Follow Area End -->
@@ -173,19 +125,12 @@
                             <!-- Copywrite Text -->
                             <div class="copywrite-text">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
                             <!-- Footer Logo -->
                             <div class="footer-logo">
-                                <a href="#"><img src="img/core-img/logo2.png" alt=""></a>
-                            </div>
-                            <!-- Social Info -->
-                            <div class="social-info">
-                                <a href="#"><i class="ti-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="ti-twitter-alt" aria-hidden="true"></i></a>
-                                <a href="#"><i class="ti-linkedin" aria-hidden="true"></i></a>
-                                <a href="#"><i class="ti-pinterest" aria-hidden="true"></i></a>
+                                <a href="#"><img src="{{ asset("img/logo1.png") }}" alt=""></a>
                             </div>
                         </div>
                     </div>

@@ -58,6 +58,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ url('/reservasi') }}" class="nav-link {{ set_active(['reservasi', 'reservasi/*']) }}">
+            <i class="nav-icon fas fa-arrow-right"></i>
+            <p>
+              Reservasi
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ url('/kontak') }}" class="nav-link {{ set_active(['kontak', 'kontak/*']) }}">
             <i class="nav-icon fas fa-arrow-right"></i>
             <p>

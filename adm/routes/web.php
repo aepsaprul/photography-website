@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('kategori/{id}/delete', 'KategoriController@hapus')->name('kategori.hapus');
   Route::resource('kategori', 'KategoriController');
 
+  Route::get('reservasi/{id}/delete', 'ReservasiController@hapus')->name('reservasi.hapus');
+  Route::resource('reservasi', 'ReservasiController');
+
   Route::get('kontak/{id}/delete', 'KontakController@hapus')->name('kontak.hapus');
   Route::resource('kontak', 'KontakController');
 
