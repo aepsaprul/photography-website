@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
-Route::get('/reservasi', 'ReservasiController@index')->name('reservasi');
+Route::get('/reservasi', 'ReservasiController@index')->name('reservasi.index');
+Route::post('/reservasi/store', 'ReservasiController@store')->name('reservasi.store');
 
 Route::get('/galeri', 'GaleriController@index')->name('galeri');
 
