@@ -81,6 +81,22 @@
             </p>
           </a>
         </li>
+        {{-- <li class="nav-item">
+          <a href="{{ url('/slider') }}" class="nav-link {{ set_active(['slider', 'slider/*']) }}">
+            <i class="nav-icon fas fa-arrow-right"></i>
+            <p>
+              Slider
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/background') }}" class="nav-link {{ set_active(['background', 'background/*']) }}">
+            <i class="nav-icon fas fa-arrow-right"></i>
+            <p>
+              Background
+            </p>
+          </a>
+        </li> --}}
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

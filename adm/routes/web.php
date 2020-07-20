@@ -40,4 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('tentang/{id}/delete', 'TentangController@hapus')->name('tentang.hapus');
   Route::resource('tentang', 'TentangController');
 
+  Route::get('slider/{id}/delete', 'SliderController@hapus')->name('slider.hapus');
+  Route::resource('slider', 'SliderController');
+
 });

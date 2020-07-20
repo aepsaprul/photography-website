@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Galeri;
 use App\Reservasi;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class ReservasiController extends Controller
 {
     public function index()
     {
-        return view('reservasi.index');
+        $galeris = Galeri::get();
+        return view('reservasi.index', ['galeris' => $galeris]);
     }
 
     public function store(Request $request)
