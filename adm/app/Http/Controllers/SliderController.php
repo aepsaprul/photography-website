@@ -28,7 +28,7 @@ class SliderController extends Controller
     public function create()
     {
         $sliders = Slider::get();
-        return view('galeri.input', ['sliders' => $sliders]);
+        return view('slider.input', ['sliders' => $sliders]);
     }
 
     /**
