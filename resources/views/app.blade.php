@@ -65,14 +65,14 @@
                                 <div class="classynav">
                                     <ul id="nav">
                                         <li class="{{ set_active(['/']) }}"><a href="{{ url('/') }}">Home</a></li>
-                                        <li class="{{ set_active(['reservasi', 'reservasi/*']) }}"><a href="{{ url('/reservasi') }}">Reservasi</a></li>
+                                        <li class="{{ set_active(['reservasi', 'reservasi/*']) }}"><a href="{{ url('/reservasi') }}">Pricelist</a></li>
                                         <li class="{{ set_active(['galeri', 'galeri/*']) }}"><a href="{{ url('/galeri') }}">Gallery</a></li>
                                         <li class="{{ set_active(['kontak', 'kontak/*']) }}"><a href="{{ url('/kontak') }}">Contact</a></li>
                                         <li class="{{ set_active(['tentang', 'tentang/*']) }}"><a href="{{ url('/tentang') }}">About</a></li>
                                     </ul>
 
                                     <!-- Search Icon -->
-                                    <div class="search-icon" data-toggle="modal" data-target="#searchModal"><i class="ti-search"></i></div>
+                                    {{-- <div class="search-icon" data-toggle="modal" data-target="#searchModal"><i class="ti-search"></i></div> --}}
                                 </div>
                                 <!-- Nav End -->
                             </div>
