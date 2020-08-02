@@ -23,7 +23,8 @@ class ReservasiController extends Controller
         $reservasis = Reservasi::create([
             "nama" => $request->nama,
             "telepon" => $request->telepon,
-            "alamat" => $request->alamat
+            "alamat" => $request->alamat,
+            "paket" => $request->paket
         ]);
 
         $request->session()->flash('status', 'Data berhasil dikirim');

@@ -81,7 +81,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{ url('/slider') }}" class="nav-link {{ set_active(['slider', 'slider/*']) }}">
             <i class="nav-icon fas fa-arrow-right"></i>
             <p>
@@ -96,7 +96,7 @@
               Background
             </p>
           </a>
-        </li>
+        </li> --}}
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

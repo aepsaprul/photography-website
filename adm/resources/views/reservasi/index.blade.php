@@ -59,6 +59,8 @@
                 <th>No</th>
                 <th>Nama</th>
                 <th>Nomor Telepon</th>
+                <th>Alamat</th>
+                <th>Paket</th>
                 <th>#</th>
               </tr>
               </thead>
@@ -68,7 +70,8 @@
                       <td>{{ $key + 1 }}</td>
                       <td class="text-left">{{ $reservasi->nama }}</td>
                       <td class="text-left">{{ $reservasi->telepon }}</td>
-                      {{-- <td class="text-left">{{ $reservasi->status }}</td> --}}
+                      <td class="text-left">{{ $reservasi->alamat }}</td>
+                      <td class="text-left">{{ $reservasi->paket }}</td>
                       <td>
                           <div class="btn-group">
                               <a href="{{ route('reservasi.edit', [$reservasi->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>

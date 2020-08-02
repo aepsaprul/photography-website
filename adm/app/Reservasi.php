@@ -10,6 +10,6 @@ class Reservasi extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'nama', 'telepon'
+        'nama', 'telepon', 'alamat', 'paket'
     ];
 }

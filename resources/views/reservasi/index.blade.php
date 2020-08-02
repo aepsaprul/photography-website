@@ -69,6 +69,10 @@
                 <label for="alamat">Alamat</label>
                 <input type="alamat" class="form-control" id="alamat" name="alamat" placeholder="Masukkan nomor telepon">
               </div>
+              <div class="form-group">
+                <label for="paket">Paket</label>
+                <input type="paket" class="form-control" id="paket" name="paket" placeholder="Contoh: Paket 1 Wedding Photo & Paket 2 Wedding Video">
+              </div>
             </div>
             <!-- /.card-body -->
 
