@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('kontak/{id}/delete', 'KontakController@hapus')->name('kontak.hapus');
   Route::resource('kontak', 'KontakController');
 
+  Route::get('fotografer/{id}/delete', 'FotograferController@hapus')->name('fotografer.hapus');
+  Route::resource('fotografer', 'FotograferController');
+
   Route::get('tentang/{id}/delete', 'TentangController@hapus')->name('tentang.hapus');
   Route::resource('tentang', 'TentangController');
 

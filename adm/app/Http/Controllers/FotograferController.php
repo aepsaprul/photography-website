@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Reservasi;
+use App\Fotografer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class ReservasiController extends Controller
+class FotograferController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class ReservasiController extends Controller
      */
     public function index()
     {
-        $reservasis = Reservasi::get();
-        return view('reservasi.index', ['reservasis' => $reservasis]);
+        $fotografers = Fotografer::orderBy('id')->get();
+
+        return view('fotografer.index', ['fotografers' => $fotografers]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ReservasiController extends Controller
      */
     public function create()
     {
-        
+        return view('fotografer.input');
     }
 
     /**
@@ -36,7 +38,20 @@ class ReservasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Validator::make($request->all(), [
+            "nama" => "required|max:50"
+        ])->validate();
+
+        $fotografers = Fotografer::create([
+            "nama" => $request->nama,
+            "email" => $request->email,
+            "telepon" => $request->telepon,
+            "alamat" => $request->alamat
+        ]);
+
+        $request->session()->flash('status', 'Data berhasil disimpan');
+
+        return redirect()->route('fotografer.index');
     }
 
     /**
@@ -58,7 +73,9 @@ class ReservasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fotografer = Fotografer::find($id);
+
+        return view('fotografer.edit', ['fotografer' => $fotografer]);
     }
 
     /**
@@ -70,7 +87,14 @@ class ReservasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fotografer = Fotografer::findOrFail($id);
+        $fotografer->nama = $request->get('nama');
+        $fotografer->email = $request->get('email');
+        $fotografer->telepon = $request->get('telepon');
+        $fotografer->alamat = $request->get('alamat');
+        $fotografer->save();
+        
+        return redirect()->route('fotografer.index')->with('status', 'Fotografer succesfully updated');
     }
 
     /**
@@ -86,12 +110,12 @@ class ReservasiController extends Controller
 
     public function hapus(Request $request, $id)
     {
-        $reservasi = Reservasi::find($id);
+        $fotografer = Fotografer::find($id);
         
-        $reservasi->delete();
+        $fotografer->delete();
 
         $request->session()->flash('status', 'Data berhasil dihapus');
         
-        return redirect()->route('reservasi.index');
+        return redirect()->route('fotografer.index');
     }
 }

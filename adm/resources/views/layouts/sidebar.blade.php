@@ -74,6 +74,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ url('/fotografer') }}" class="nav-link {{ set_active(['fotografer', 'fotografer/*']) }}">
+            <i class="nav-icon fas fa-arrow-right"></i>
+            <p>
+              Fotografer
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ url('/tentang') }}" class="nav-link {{ set_active(['tentang', 'tentang/*']) }}">
             <i class="nav-icon fas fa-arrow-right"></i>
             <p>

@@ -28,7 +28,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Reservasi</h1>
+        <h1 class="m-0 text-dark">Fotografer</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         
@@ -49,33 +49,33 @@
         @endif
         <div class="card">
           <div class="card-header">
-            {{-- <h3 class="card-title"><a href="{{ route('reservasi.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3> --}}
+            <h3 class="card-title"><a href="{{ route('fotografer.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i></a></h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <table id="example2" class="table table-bordered table-hover">
               <thead>
               <tr>
-                <th>No</th>
+                <th>ID</th>
                 <th>Nama</th>
-                <th>Nomor Telepon</th>
+                <th>Email</th>
+                <th>Nomor</th>
                 <th>Alamat</th>
-                <th>Paket</th>
                 <th>#</th>
               </tr>
               </thead>
               <tbody>
-                @foreach ($reservasis as $key => $reservasi)
+                @foreach ($fotografers as $key => $fotografer)
                   <tr>
                       <td>{{ $key + 1 }}</td>
-                      <td class="text-left">{{ $reservasi->nama }}</td>
-                      <td class="text-left">{{ $reservasi->telepon }}</td>
-                      <td class="text-left">{{ $reservasi->alamat }}</td>
-                      <td class="text-left">{{ $reservasi->paket }}</td>
+                      <td class="text-left">{{ $fotografer->nama }}</td>
+                      <td class="text-left">{{ $fotografer->email }}</td>
+                      <td class="text-left">{{ $fotografer->telepon }}</td>
+                      <td class="text-left">{{ $fotografer->alamat }}</td>
                       <td>
                           <div class="btn-group">
-                              {{-- <a href="{{ route('reservasi.edit', [$reservasi->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a> --}}
-                              <a href="{{ route('reservasi.hapus', [$reservasi->id]) }}" onclick="return confirm('Yakin akan hapus?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                              <a href="{{ route('fotografer.edit', [$fotografer->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                              <a href="{{ route('fotografer.hapus', [$fotografer->id]) }}" onclick="return confirm('Yakin akan hapus?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                           </div>
                       </td>
                   </tr>
